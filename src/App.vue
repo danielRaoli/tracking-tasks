@@ -11,7 +11,7 @@ function adicionarTarefa(tempo, descricao) {
         descricao: descricao,
         tempo: tempo
     })
-    console.log(tarefas)
+   
 }
 
 const modoEscuroAtivo = ref(false)
@@ -61,4 +61,14 @@ main.modo-escuro {
     padding: 1rem;
 }
 
+@media only screen and (max-width:1000px) {
+    main{ 
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    .conteudo{
+        width: 100%;
+    }
+}
 </style>

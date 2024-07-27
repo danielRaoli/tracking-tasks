@@ -63,4 +63,10 @@ div {
     background-color: var(--bg-primario);
     color: var(--texto-primario);
 }
+
+@media only screen and (max-width:760px) {
+    .wrapper-time{
+        width: 100%;
+    }
+}
 </style>

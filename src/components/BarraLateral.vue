@@ -40,6 +40,7 @@ header {
     align-items: center;
     justify-content: start;
     flex-direction: column;
+
   
 }
 .icon{
@@ -70,8 +71,16 @@ header{
 }
 
 header img{
-    width: 100%;
+    height: 100px;
 }
+}
+
+@media only screen and (max-width:1000px) {
+    header{
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
 }
 
 
