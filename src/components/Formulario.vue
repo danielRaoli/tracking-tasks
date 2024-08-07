@@ -1,14 +1,28 @@
-<script setup>
-import Temporizador from './Temporizador.vue';
-import { ref } from 'vue'
+<script lang="ts" setup>
 
-const todoName = ref('')
+import Temporizador from './Temporizador.vue';
+import { computed, ref } from 'vue'
+import { useStore } from '@/store';
+import type ITarefa from '@/interfaces/ITarefa';
+
+const todoName = ref<String>('')
+const projetoId =  ref<String>('')
+
+
+const store = useStore()
+const projetos = computed(() => store.state.projetos)
 
 const emit = defineEmits(['tarefaFinalizada'])
 
-function finalizarTarefa(tempo) {
+function finalizarTarefa(tempo : number) {
 
-    emit('tarefaFinalizada', tempo, todoName.value)
+    const tarefa : ITarefa = {
+        name: todoName.value,
+        projetoId: projetoId.value,
+        time: tempo
+
+    }
+    emit('tarefaFinalizada',tarefa )
 }
 </script>
 
@@ -21,6 +35,12 @@ function finalizarTarefa(tempo) {
 
                 <input v-model="todoName" type="text" placeholder="Qual tarefa deseja iniciar">
 
+            </div>
+            <div>
+                <select class="select" v-model="projetoId">
+                    <option value="">selecione um projeto</option>
+                    <option :value="projeto.id" v-for="projeto in projetos" :key="projeto.id">{{ projeto.name }}</option>
+                </select>
             </div>
             <Temporizador @aoFinalizar="finalizarTarefa" />
 
@@ -70,6 +90,7 @@ input::placeholder {
 .wrapper {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 @media only screen and (max-width:1000px) {

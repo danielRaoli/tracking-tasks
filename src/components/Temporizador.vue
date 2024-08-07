@@ -1,11 +1,11 @@
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue'
 import Cronometro from './Cronometro.vue';
 import ActionButton from './ActionButton.vue';
 
 const cronomeRodando = ref(false)
 
-let tempoEmSegundos = ref(0)
+const tempoEmSegundos = ref<number>(0)
 const interval = ref(0)
 
 const emit = defineEmits(['aoFinalizar'])

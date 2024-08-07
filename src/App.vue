@@ -1,18 +1,8 @@
 <script setup>
 import { ref } from 'vue';
 import BarraLateral from './components/BarraLateral.vue'
-import Formulario from './components/Formulario.vue'
-import Tarefas from './components/Tarefas.vue';
+import Notificacoes from './components/Notificacoes.vue';
 
-const tarefas = ref([])
-
-function adicionarTarefa(tempo, descricao) {
-    tarefas.value.push({
-        descricao: descricao,
-        tempo: tempo
-    })
-   
-}
 
 const modoEscuroAtivo = ref(false)
 
@@ -24,11 +14,8 @@ function alterarModo(modoAtivo) {
 <template>
     <main :class="{'modo-escuro' : modoEscuroAtivo}">
         <BarraLateral @modoAlterado="alterarModo" />
-        <div class="conteudo">
-            <Formulario @tarefaFinalizada="adicionarTarefa" />
-    
-            <Tarefas :tarefas="tarefas" />
-        </div>
+        <router-view></router-view>
+        <Notificacoes/>
     </main>
 </template>
 

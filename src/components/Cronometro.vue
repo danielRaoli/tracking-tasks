@@ -1,9 +1,9 @@
-<script  setup>
+<script lang="ts"  setup>
 
 import { computed, defineProps } from 'vue';
-const props = defineProps({
-    tempoEmSegundos : Number
-})
+const props = defineProps<{
+    tempoEmSegundos : number
+}>()
 
 const hour = computed(() => {
   const date = new Date(props.tempoEmSegundos * 1000);

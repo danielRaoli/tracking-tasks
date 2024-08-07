@@ -1,4 +1,4 @@
-<script  setup>
+<script setup>
 import { computed, ref } from 'vue';
 
 const modoEscuroAtivo = ref(false)
@@ -9,9 +9,9 @@ const buttonText = computed(() => {
     return modoEscuroAtivo.value ? 'modo claro' : 'modo escuro'
 })
 
-function alterarModo(){
+function alterarModo() {
     modoEscuroAtivo.value = !modoEscuroAtivo.value
-    emit('modoAlterado',modoEscuroAtivo.value)
+    emit('modoAlterado', modoEscuroAtivo.value)
 }
 
 </script>
@@ -23,8 +23,27 @@ function alterarModo(){
             <span>Tracking Tasks</span>
         </div>
         <button class="button" @click="alterarModo">
-            {{ buttonText  }}
+            {{ buttonText }}
         </button>
+
+        <nav>
+            <ul>
+                <li>
+                    <router-link to="/" class="link">
+                        <i class="fas fa-tasks"></i>
+                        tarefas
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/projetos">
+                        <i class="fas fa-project-diagram"></i>
+                        projetos
+                    </router-link>
+                </li>
+            </ul>
+
+
+        </nav>
     </header>
 
 </template>
@@ -41,9 +60,10 @@ header {
     justify-content: start;
     flex-direction: column;
 
-  
+
 }
-.icon{
+
+.icon {
     background-color: transparent;
     display: flex;
     width: auto;
@@ -51,13 +71,13 @@ header {
 
 }
 
-.icon > span{
+.icon>span {
     font-size: 24px;
     font-weight: bold;
     color: #fefefe;
 }
 
-img{
+img {
     height: 200px;
     width: auto;
 }
@@ -65,23 +85,21 @@ img{
 
 
 @media only screen and(max-width:768px) {
-header{
-    height: auto;
-    padding: 2.5px;
-}
+    header {
+        height: auto;
+        padding: 2.5px;
+    }
 
-header img{
-    height: 100px;
-}
+    header img {
+        height: 100px;
+    }
 }
 
 @media only screen and (max-width:1000px) {
-    header{
+    header {
         width: 100%;
         height: auto;
         overflow: hidden;
     }
 }
-
-
 </style>
